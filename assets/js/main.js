@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const frameCount = 240;
 
+
     /**
      * Step 1: Modular Component Loader
      * Fetches and mounts all external HTML sections defined with [data-include]

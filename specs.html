@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Specs — Infinite V</title>
+    <meta name="description" content="Full technical specifications for the Forma Horizon Pro VR headset. Display, tracking, audio, compute, battery, and connectivity details.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/router.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-card { animation: countUp 0.6s ease forwards; }
+        .spec-row:hover { background: rgba(255,255,255,0.03); }
+        .tab-btn.active { color: #fff; border-bottom-color: #ff6a00; }
+    </style>
+</head>
+<body class="bg-black min-h-screen">
+
+    <!-- Navbar -->
+    <div data-include="components/navbar.html"></div>
+
+    <!-- Hero -->
+    <section class="w-full px-4 sm:px-8 md:px-12 pt-16 pb-12 border-b border-white/5" style="background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,106,0,0.08), transparent);">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_#ff6a00]"></span>
+                <span class="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-orange-400">Full Technical Specifications</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-bold tracking-tight mb-4">Forma Horizon <span style="color:#ff6a00;">Pro</span></h1>
+            <p class="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">Every sensor, every pixel, every millisecond — engineered to the edge of what is physically possible in spatial computing.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <button onclick="Cart.addToCart({id:'apex-cyber',name:'Apex Cyber VR Headset',price:2499,image:'assets/images/models/headset_model_a_1787642757913.jpg',tier:'Standard'}); setTimeout(()=>location.href='cart.html',1200);" class="px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] cursor-pointer transition-transform hover:scale-105" style="background:#ff6a00;color:#000;box-shadow:0 6px 24px rgba(255,106,0,0.35);">Pre-Order Now</button>
+                <a href="models.html" class="px-8 py-3.5 border border-white/20 hover:border-white/50 text-white text-xs font-semibold uppercase tracking-[0.2em] transition-all bg-white/5 hover:bg-white/10 text-center">Compare Models</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Stats Bar -->
+    <section class="w-full px-4 sm:px-8 md:px-12 py-12 border-b border-white/5 bg-zinc-950/50">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="stat-card" style="animation-delay:0s;">
+                <div class="text-3xl sm:text-4xl font-bold text-white mb-1">12K</div>
+                <div class="text-xs text-zinc-400 uppercase tracking-widest">Micro-OLED Display</div>
+            </div>
+            <div class="stat-card" style="animation-delay:0.1s;">
+                <div class="text-3xl sm:text-4xl font-bold text-orange-400 mb-1">19</div>
+                <div class="text-xs text-zinc-400 uppercase tracking-widest">Tracking Sensors</div>
+            </div>
+            <div class="stat-card" style="animation-delay:0.2s;">
+                <div class="text-3xl sm:text-4xl font-bold text-white mb-1">0.8ms</div>
+                <div class="text-xs text-zinc-400 uppercase tracking-widest">Motion-to-Photon</div>
+            </div>
+            <div class="stat-card" style="animation-delay:0.3s;">
+                <div class="text-3xl sm:text-4xl font-bold text-white mb-1">290g</div>
+                <div class="text-xs text-zinc-400 uppercase tracking-widest">Net Weight</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Specs Table -->
+    <section class="w-full px-4 sm:px-8 md:px-12 py-16">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Tab Nav -->
+            <div class="flex gap-0 border-b border-white/10 mb-10 overflow-x-auto">
+                <button onclick="showTab('display')" id="tab-display" class="tab-btn active px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-orange-500 text-white whitespace-nowrap cursor-pointer transition-colors">Display</button>
+                <button onclick="showTab('tracking')" id="tab-tracking" class="tab-btn px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-transparent text-white/50 hover:text-white whitespace-nowrap cursor-pointer transition-colors">Tracking</button>
+                <button onclick="showTab('audio')" id="tab-audio" class="tab-btn px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-transparent text-white/50 hover:text-white whitespace-nowrap cursor-pointer transition-colors">Audio</button>
+                <button onclick="showTab('compute')" id="tab-compute" class="tab-btn px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-transparent text-white/50 hover:text-white whitespace-nowrap cursor-pointer transition-colors">Compute</button>
+                <button onclick="showTab('battery')" id="tab-battery" class="tab-btn px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-transparent text-white/50 hover:text-white whitespace-nowrap cursor-pointer transition-colors">Battery</button>
+                <button onclick="showTab('connect')" id="tab-connect" class="tab-btn px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] border-b-2 border-transparent text-white/50 hover:text-white whitespace-nowrap cursor-pointer transition-colors">Connectivity</button>
+            </div>
+
+            <!-- Display Tab -->
+            <div id="panel-display">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Display System</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Panel Technology</td><td class="py-4 px-5 text-white">Dual Micro-OLED, 1" diagonal per eye</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Resolution</td><td class="py-4 px-5 text-white">6144 × 3456 per eye (12K combined)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Pixel Density</td><td class="py-4 px-5 text-white">64 PPD (pixels per degree)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Refresh Rate</td><td class="py-4 px-5 text-white">120Hz standard, 240Hz performance mode</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Field of View</td><td class="py-4 px-5 text-white">140° bionic horizontal, 120° vertical</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Brightness</td><td class="py-4 px-5 text-white">2200 nits peak, 800 nits sustained</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Contrast</td><td class="py-4 px-5 text-white">Infinite:1 (true black OLED)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Color Gamut</td><td class="py-4 px-5 text-white">DCI-P3 100% / Rec.2020 85%</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">Visor</td><td class="py-4 px-5 text-white">Electrochromic amber — AR to VR in 3ms</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tracking Tab -->
+            <div id="panel-tracking" class="hidden">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Spatial Tracking</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Total Sensors</td><td class="py-4 px-5 text-white">19 sensors (LiDAR + Optical + IMU)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Eye Tracking</td><td class="py-4 px-5 text-white">Sub-millimeter infrared, 120Hz</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Hand Tracking</td><td class="py-4 px-5 text-white">26-point skeletal model, 60fps</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Head Tracking</td><td class="py-4 px-5 text-white">6DoF, sub-1mm positional accuracy</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">IMU</td><td class="py-4 px-5 text-white">3-axis gyroscope + accelerometer, 1000Hz</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Room Mapping</td><td class="py-4 px-5 text-white">LiDAR mesh, 20m radius, 1cm precision</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">Latency</td><td class="py-4 px-5 text-white">&lt; 0.8ms motion-to-photon</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Audio Tab -->
+            <div id="panel-audio" class="hidden">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Spatial Audio</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Transducer Type</td><td class="py-4 px-5 text-white">Temporal bone conduction + dynamic drivers</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Spatial Audio</td><td class="py-4 px-5 text-white">True 3D head-related transfer function (HRTF)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Microphones</td><td class="py-4 px-5 text-white">6 beamforming mics, noise cancellation</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Frequency Response</td><td class="py-4 px-5 text-white">20Hz – 24kHz</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Pass-Through Audio</td><td class="py-4 px-5 text-white">Real-time ambient layer blending</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">Volume</td><td class="py-4 px-5 text-white">Gesture-controlled, no buttons needed</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Compute Tab -->
+            <div id="panel-compute" class="hidden">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Silicon & Compute</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Processor</td><td class="py-4 px-5 text-white">M3 Neural Spatial Bus (custom 3nm)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">CPU Cores</td><td class="py-4 px-5 text-white">12-core (8 performance + 4 efficiency)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">GPU</td><td class="py-4 px-5 text-white">40-core spatial GPU, 6.4 TFLOPS</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Neural Engine</td><td class="py-4 px-5 text-white">32-core, 38 TOPS</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">RAM</td><td class="py-4 px-5 text-white">24GB unified spatial memory</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Storage</td><td class="py-4 px-5 text-white">256GB / 512GB / 1TB NVMe</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">Encryption</td><td class="py-4 px-5 text-white">AES-256 hardware accelerated</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Battery Tab -->
+            <div id="panel-battery" class="hidden">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Power & Battery</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Cell Type</td><td class="py-4 px-5 text-white">Silicon anode lithium-ion, hot-swappable</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Capacity</td><td class="py-4 px-5 text-white">6800 mAh (primary), 2200 mAh (tethered)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Runtime</td><td class="py-4 px-5 text-white">4.5 hours continuous (extended mode: 7h)</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Charging</td><td class="py-4 px-5 text-white">65W MagSafe Spatial — 0–80% in 35min</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Hot-Swap</td><td class="py-4 px-5 text-white">Zero-downtime battery cell exchange</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">Thermal</td><td class="py-4 px-5 text-white">Active silent micro-fans, magnesium heat pipes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Connectivity Tab -->
+            <div id="panel-connect" class="hidden">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-orange-400 mb-6">Connectivity</h2>
+                <div class="rounded-2xl border border-white/8 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium w-48">Wi-Fi</td><td class="py-4 px-5 text-white">Wi-Fi 7 (802.11be), 2.4 / 5 / 6 GHz</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">UWB</td><td class="py-4 px-5 text-white">Ultra-Wideband, 2cm spatial precision</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Bluetooth</td><td class="py-4 px-5 text-white">Bluetooth 5.4 LE Audio</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">USB-C</td><td class="py-4 px-5 text-white">USB 4.0 / Thunderbolt 4, 40Gbps</td></tr>
+                            <tr class="spec-row border-b border-white/5"><td class="py-4 px-5 text-zinc-400 font-medium">Controller</td><td class="py-4 px-5 text-white">Spatial Wand Pro (UWB + haptics)</td></tr>
+                            <tr class="spec-row"><td class="py-4 px-5 text-zinc-400 font-medium">PC Tether</td><td class="py-4 px-5 text-white">DisplayPort 2.1 via USB-C, &lt;1ms</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="w-full px-4 sm:px-8 md:px-12 py-16 border-t border-white/5" style="background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,106,0,0.06), transparent);">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">Ready to experience it?</h2>
+            <p class="text-zinc-400 text-sm mb-8">Reserve your Forma Horizon Pro with global priority shipping.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="Cart.addToCart({id:'apex-cyber',name:'Apex Cyber VR Headset',price:2499,image:'assets/images/models/headset_model_a_1787642757913.jpg',tier:'Standard'}); setTimeout(()=>location.href='cart.html',1200);" class="px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] cursor-pointer transition-transform hover:scale-105" style="background:#ff6a00;color:#000;">Add to Cart — $2,499</button>
+                <a href="models.html" class="px-8 py-3.5 border border-white/20 hover:border-white/40 text-white text-xs font-semibold uppercase tracking-[0.2em] transition-all bg-transparent hover:bg-white/5 text-center">Browse Models</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        function showTab(tab) {
+            const tabs = ['display', 'tracking', 'audio', 'compute', 'battery', 'connect'];
+            tabs.forEach(t => {
+                document.getElementById('panel-' + t).classList.add('hidden');
+                const btn = document.getElementById('tab-' + t);
+                btn.classList.remove('active', 'border-orange-500', 'text-white');
+                btn.classList.add('border-transparent', 'text-white/50');
+            });
+            document.getElementById('panel-' + tab).classList.remove('hidden');
+            const active = document.getElementById('tab-' + tab);
+            active.classList.add('active', 'border-orange-500', 'text-white');
+            active.classList.remove('border-transparent', 'text-white/50');
+        }
+    </script>
+</body>
+</html>

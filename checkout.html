@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — Infinite V</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/router.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        .form-input { width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:#fff;font-size:0.85rem;outline:none;transition:border-color 0.2s; }
+        .form-input:focus { border-color:rgba(255,106,0,0.6);background:rgba(255,106,0,0.04); }
+        .form-label { display:block;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.5);margin-bottom:6px; }
+        .shipping-card { border:1px solid rgba(255,255,255,0.10);border-radius:14px;padding:16px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px; }
+        .shipping-card:hover { border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.03); }
+        .shipping-card.selected { border-color:#ff6a00;background:rgba(255,106,0,0.06); }
+        .pay-card { border:1px solid rgba(255,255,255,0.10);border-radius:14px;padding:14px 18px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:10px; }
+        .pay-card:hover { border-color:rgba(255,255,255,0.25); }
+        .pay-card.selected { border-color:#ff6a00;background:rgba(255,106,0,0.06); }
+        input[type=radio] { display:none; }
+        .section-title { font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,106,0,0.9);margin-bottom:16px;display:flex;align-items:center;gap:8px; }
+        .step-num { width:22px;height:22px;border-radius:50%;background:#ff6a00;color:#000;font-size:0.65rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center; }
+    </style>
+</head>
+<body class="bg-black min-h-screen">
+
+    <div data-include="components/navbar.html"></div>
+
+    <main class="w-full px-4 sm:px-8 md:px-12 py-12 max-w-6xl mx-auto">
+        <a href="cart.html" class="inline-flex items-center gap-2 text-xs text-zinc-400 hover:text-white transition-colors mb-8">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Back to Cart
+        </a>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">Checkout</h1>
+        <p class="text-zinc-400 text-sm mb-10">Complete your order securely.</p>
+
+        <div class="flex flex-col lg:flex-row gap-10 items-start">
+            <!-- Left: Form -->
+            <form id="checkout-form" onsubmit="placeOrder(event)" class="flex-1 space-y-10">
+
+                <!-- Step 1: Contact -->
+                <div>
+                    <div class="section-title"><span class="step-num">1</span> Contact Information</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="Elon" required>
+                        </div>
+                        <div>
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Musk" required>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="you@example.com" required>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="+1 (555) 000-0000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Shipping Address -->
+                <div>
+                    <div class="section-title"><span class="step-num">2</span> Shipping Address</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Street Address</label>
+                            <input type="text" class="form-input" placeholder="123 Innovation Blvd" required>
+                        </div>
+                        <div>
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-input" placeholder="San Francisco" required>
+                        </div>
+                        <div>
+                            <label class="form-label">State / Province</label>
+                            <input type="text" class="form-input" placeholder="California">
+                        </div>
+                        <div>
+                            <label class="form-label">ZIP / Postal Code</label>
+                            <input type="text" class="form-input" placeholder="94105" required>
+                        </div>
+                        <div>
+                            <label class="form-label">Country</label>
+                            <select class="form-input" style="cursor:pointer;">
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ca">Canada</option>
+                                <option value="au">Australia</option>
+                                <option value="in">India</option>
+                                <option value="de">Germany</option>
+                                <option value="jp">Japan</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Shipping Method -->
+                <div>
+                    <div class="section-title"><span class="step-num">3</span> Shipping Method</div>
+                    <div class="space-y-3">
+                        <label class="shipping-card selected" id="ship-standard" onclick="selectShipping('standard', 0)">
+                            <input type="radio" name="shipping" value="standard" checked>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-white">Standard Delivery</div>
+                                <div class="text-xs text-zinc-400 mt-0.5">5-7 business days</div>
+                            </div>
+                            <div class="text-sm font-bold text-green-400">Free</div>
+                        </label>
+                        <label class="shipping-card" id="ship-express" onclick="selectShipping('express', 29)">
+                            <input type="radio" name="shipping" value="express">
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-white">Express Delivery</div>
+                                <div class="text-xs text-zinc-400 mt-0.5">2-3 business days</div>
+                            </div>
+                            <div class="text-sm font-bold text-white">$29</div>
+                        </label>
+                        <label class="shipping-card" id="ship-priority" onclick="selectShipping('priority', 59)">
+                            <input type="radio" name="shipping" value="priority">
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-white">Priority Overnight</div>
+                                <div class="text-xs text-zinc-400 mt-0.5">Next business day by 10am</div>
+                            </div>
+                            <div class="text-sm font-bold text-orange-400">$59</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment -->
+                <div>
+                    <div class="section-title"><span class="step-num">4</span> Payment Method</div>
+                    <div class="space-y-3 mb-6">
+                        <div class="pay-card selected" id="pay-card" onclick="selectPayment('card')">
+                            <svg class="w-5 h-5 text-zinc-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            <span class="text-sm font-medium text-white">Credit / Debit Card</span>
+                        </div>
+                        <div class="pay-card" id="pay-crypto" onclick="selectPayment('crypto')">
+                            <svg class="w-5 h-5 text-yellow-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9m0-5H7m2 5H7m2 5v2m0-14V5"/></svg>
+                            <span class="text-sm font-medium text-white">Crypto (BTC / ETH / SOL)</span>
+                        </div>
+                        <div class="pay-card" id="pay-wire" onclick="selectPayment('wire')">
+                            <svg class="w-5 h-5 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                            <span class="text-sm font-medium text-white">Bank Transfer / Wire</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Fields -->
+                    <div id="card-fields" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Card Number</label>
+                            <input type="text" class="form-input" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)">
+                        </div>
+                        <div>
+                            <label class="form-label">Expiry Date</label>
+                            <input type="text" class="form-input" placeholder="MM / YY" maxlength="7">
+                        </div>
+                        <div>
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="form-input" placeholder="•••" maxlength="4">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Name on Card</label>
+                            <input type="text" class="form-input" placeholder="John Doe">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 text-sm font-bold uppercase tracking-[0.2em] cursor-pointer transition-all hover:scale-[1.02]" style="background:#ff6a00;color:#000;box-shadow:0 6px 24px rgba(255,106,0,0.35);">
+                    Place Order
+                </button>
+                <p class="text-center text-xs text-zinc-500 mt-3">By placing your order you agree to our Terms & Privacy Policy.</p>
+            </form>
+
+            <!-- Right: Order Summary -->
+            <div class="w-full lg:w-[340px] shrink-0 sticky top-24">
+                <div class="rounded-2xl bg-zinc-950/90 border border-white/10 p-6">
+                    <h2 class="text-sm font-bold text-white mb-5 uppercase tracking-wider">Order Summary</h2>
+                    <div id="co-items" class="space-y-4 mb-6"></div>
+                    <div class="w-full h-px bg-white/8 mb-4"></div>
+                    <div class="space-y-2 text-sm mb-4">
+                        <div class="flex justify-between"><span class="text-zinc-400">Subtotal</span><span class="text-white" id="co-subtotal">$0</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Shipping</span><span class="text-white" id="co-shipping">Free</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Tax (8%)</span><span class="text-white" id="co-tax">$0</span></div>
+                    </div>
+                    <div class="w-full h-px bg-white/8 mb-4"></div>
+                    <div class="flex justify-between">
+                        <span class="text-white font-bold">Total</span>
+                        <span class="text-white font-bold text-xl" id="co-total">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        let shippingCost = 0;
+
+        function renderSummary() {
+            const cart = Cart.getCart();
+            const container = document.getElementById('co-items');
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-white/8 flex items-center justify-center p-1 shrink-0">
+                        <img src="${item.image}" class="max-h-full object-contain">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-xs font-medium text-white truncate">${item.name}</div>
+                        <div class="text-[0.65rem] text-zinc-500">Qty: ${item.qty||1}</div>
+                    </div>
+                    <div class="text-xs font-bold text-white">$${(item.price*(item.qty||1)).toLocaleString()}</div>
+                </div>
+            `).join('');
+
+            const subtotal = Cart.getTotal();
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax + shippingCost;
+            document.getElementById('co-subtotal').textContent = '$' + subtotal.toLocaleString();
+            document.getElementById('co-tax').textContent = '$' + tax.toFixed(0);
+            document.getElementById('co-total').textContent = '$' + total.toLocaleString(undefined, {maximumFractionDigits:0});
+        }
+
+        function selectShipping(type, cost) {
+            shippingCost = cost;
+            ['standard','express','priority'].forEach(t => {
+                document.getElementById('ship-'+t).classList.toggle('selected', t === type);
+            });
+            document.getElementById('co-shipping').textContent = cost === 0 ? 'Free' : '$' + cost;
+            renderSummary();
+        }
+
+        function selectPayment(type) {
+            ['card','crypto','wire'].forEach(t => {
+                document.getElementById('pay-'+t).classList.toggle('selected', t === type);
+            });
+            document.getElementById('card-fields').style.display = type === 'card' ? 'grid' : 'none';
+        }
+
+        function formatCard(input) {
+            let v = input.value.replace(/\D/g, '').substring(0,16);
+            input.value = v.replace(/(.{4})/g, '$1 ').trim();
+        }
+
+        function placeOrder(e) {
+            e.preventDefault();
+            if (Cart.getCart().length === 0) { alert('Your cart is empty!'); return; }
+            // Save order number for confirmation page
+            const orderNum = 'IV-' + Date.now().toString().slice(-6);
+            localStorage.setItem('iv_last_order', JSON.stringify({ orderNum, total: Cart.getTotal(), items: Cart.getCart() }));
+            Cart.clearCart();
+            location.href = 'order-confirmed.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => setTimeout(renderSummary, 200));
+    </script>
+</body>
+</html>
