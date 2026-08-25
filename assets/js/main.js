@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         240
     );
 
-    // Initialize Second Scroll Animation (VR Box interaction — 120 frames for exactly 1 single round)
+    // Initialize Second Scroll Animation (VR Box interaction — 240 frames for 1 complete 360° round)
     setupAnimation(
         "scroll-canvas-2",
         "animation-container-2",
         index => `assets/frames/vr-box/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`,
-        120
+        240
     );
 });
