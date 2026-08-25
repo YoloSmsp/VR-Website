@@ -17,12 +17,28 @@ An ultra-modern, high-performance spatial computing and AI VR landing page with 
 - **HTML5 Canvas 2D Context** for zero-latency frame scrubbing
 - **Inter Font & Google Fonts Typography**
 
+## 📁 Clean Project Structure
+
+```text
+├── index.html                  # Main Webpage Entry Point
+├── assets/
+│   ├── js/
+│   │   └── main.js             # Dual Canvas scroll & interactive engine
+│   ├── images/
+│   │   └── models/             # VR Headset model showcase assets
+│   └── frames/
+│       ├── hero/               # 240-frame sequence for first scroll animation
+│       └── vr-box/             # 240-frame sequence for second scroll animation
+├── .gitignore                  # Ignored system files
+└── README.md                   # Project documentation
+```
+
 ## 💻 Getting Started
 
 1. Clone or download this repository:
    ```bash
-   git clone <your-repo-url>
-   cd "AI  VR WEBSITE"
+   git clone https://github.com/YoloSmsp/VR-Website.git
+   cd VR-Website
    ```
 2. Launch a local web server (e.g. using Python or VS Code Live Server):
    ```bash
@@ -32,14 +48,3 @@ An ultra-modern, high-performance spatial computing and AI VR landing page with 
    ```
    http://localhost:8080
    ```
-
-## 📂 Project Structure
-
-```
-├── index.html              # Main webpage structure and styles
-├── ezgif-frame-*.jpg       # 240-frame sequence for first scroll animation
-├── vr_box/                 # 240-frame sequence for second scroll animation
-├── images/                 # Headset model preview assets
-├── .gitignore              # Ignored system files
-└── README.md               # Project documentation
-```

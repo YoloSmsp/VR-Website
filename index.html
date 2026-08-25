@@ -128,7 +128,7 @@
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border-2 ring-2 shadow-lg bg-zinc-950/90"
                                             style="border-color: #ff6a00; box-shadow: 0 0 25px rgba(255, 106, 0, 0.4);">
-                                            <img src="images/headset_model_a_1787642757913.jpg" alt="Apex Cyber"
+                                            <img src="assets/images/models/headset_model_a_1787642757913.jpg" alt="Apex Cyber"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                             <span
                                                 class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full shadow-[0_0_8px_currentColor]"
@@ -145,7 +145,7 @@
                                     <div class="relative z-10 flex flex-col items-center">
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border border-white/15 bg-zinc-950/60 hover:border-white/40 opacity-70 hover:opacity-100 hover:bg-zinc-900/80">
-                                            <img src="images/headset_model_b_1787642783649.jpg" alt="Mirage Glass"
+                                            <img src="assets/images/models/headset_model_b_1787642783649.jpg" alt="Mirage Glass"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                         </button>
                                         <div class="h-6 mt-2 flex items-center justify-center">
@@ -158,7 +158,7 @@
                                     <div class="relative z-10 flex flex-col items-center">
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border border-white/15 bg-zinc-950/60 hover:border-white/40 opacity-70 hover:opacity-100 hover:bg-zinc-900/80">
-                                            <img src="images/headset_model_c_1787642797135.jpg" alt="Horizon Pulse"
+                                            <img src="assets/images/models/headset_model_c_1787642797135.jpg" alt="Horizon Pulse"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                         </button>
                                         <div class="h-6 mt-2 flex items-center justify-center">
@@ -175,7 +175,7 @@
                         <div class="lg:col-span-6 flex items-center justify-center relative pointer-events-auto">
                             <div
                                 class="relative w-full h-full min-h-[460px] sm:min-h-[560px] lg:min-h-[640px] flex items-center justify-center">
-                                <img src="images/vr_hero_black_1787642741092.jpg" alt="VR Headset Hero"
+                                <img src="assets/images/models/vr_hero_black_1787642741092.jpg" alt="VR Headset Hero"
                                     class="w-full max-h-[620px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.18)]">
 
                                 <!-- Inspect button -->
@@ -453,7 +453,7 @@
                         <!-- Headset Preview Window -->
                         <div
                             class="w-full h-48 sm:h-52 rounded-2xl bg-zinc-900/70 border border-white/5 flex items-center justify-center p-4 mb-8 overflow-hidden group-hover:border-white/10 transition-colors">
-                            <img src="images/headset_model_a_1787642757913.jpg" alt="Basic Headset"
+                            <img src="assets/images/models/headset_model_a_1787642757913.jpg" alt="Basic Headset"
                                 class="max-h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transform group-hover:scale-105 transition-transform duration-300">
                         </div>
 
@@ -531,7 +531,7 @@
                         <!-- Headset Preview Window -->
                         <div
                             class="w-full h-48 sm:h-52 rounded-2xl bg-zinc-900/70 border border-white/5 flex items-center justify-center p-4 mb-8 overflow-hidden group-hover:border-white/10 transition-colors">
-                            <img src="images/headset_model_b_1787642783649.jpg" alt="Standard Headset"
+                            <img src="assets/images/models/headset_model_b_1787642783649.jpg" alt="Standard Headset"
                                 class="max-h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transform group-hover:scale-105 transition-transform duration-300">
                         </div>
 
@@ -609,7 +609,7 @@
                         <!-- Headset Preview Window -->
                         <div
                             class="w-full h-48 sm:h-52 rounded-2xl bg-zinc-900/80 border border-cyan-500/20 flex items-center justify-center p-4 mb-8 overflow-hidden group-hover:border-cyan-500/40 transition-colors">
-                            <img src="images/headset_model_c_1787642797135.jpg" alt="Pro Headset"
+                            <img src="assets/images/models/headset_model_c_1787642797135.jpg" alt="Pro Headset"
                                 class="max-h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transform group-hover:scale-105 transition-transform duration-300">
                         </div>
 
@@ -697,69 +697,8 @@
         </div>
     </div>
 
-    <script>
-        const frameCount = 240;
-
-        function setupAnimation(canvasId, containerId, imagePathFunc) {
-            const canvas = document.getElementById(canvasId);
-            const context = canvas.getContext("2d");
-            const container = document.getElementById(containerId);
-
-            const images = [];
-            let firstFrameLoaded = false;
-
-            // Preload all images for a seamless scrolling experience
-            for (let i = 1; i <= frameCount; i++) {
-                const img = new Image();
-                img.src = imagePathFunc(i);
-                images.push(img);
-
-                img.onload = () => {
-                    if (!firstFrameLoaded && i === 1) {
-                        firstFrameLoaded = true;
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        context.drawImage(img, 0, 0);
-                    }
-                };
-            }
-
-            window.addEventListener('scroll', () => {
-                const rect = container.getBoundingClientRect();
-
-                // Calculate scroll fraction specifically within the bounds of THIS container
-                // When container top reaches viewport top, scrolled is 0.
-                const scrolled = Math.max(0, -rect.top);
-                const maxScrollTop = container.scrollHeight - window.innerHeight;
-
-                const scrollFraction = Math.min(1, scrolled / maxScrollTop);
-                const frameIndex = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
-
-                requestAnimationFrame(() => {
-                    const currentImage = images[frameIndex];
-                    if (currentImage && currentImage.complete && currentImage.naturalWidth !== 0) {
-                        canvas.width = currentImage.width;
-                        canvas.height = currentImage.height;
-                        context.drawImage(currentImage, 0, 0);
-                    }
-                });
-            });
-        }
-
-        // Initialize First Animation
-        setupAnimation(
-            "scroll-canvas",
-            "animation-container",
-            index => `ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
-        );
-
-        // Initialize Second Animation (VR Box)
-        setupAnimation(
-            "scroll-canvas-2",
-            "animation-container-2",
-            index => `vr_box/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
-        );
-    </script>
+    <!-- External Script for Clean Architecture -->
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
