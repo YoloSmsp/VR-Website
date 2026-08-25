@@ -1,11 +1,10 @@
 /**
  * Vision Pro & AI VR Interactive Showcase
- * Modular Component Loader & Dual Canvas Scroll Engine
+ * Modular Component Loader & High-Performance Dual Canvas Scroll Engine
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
     const frameCount = 240;
-
 
     /**
      * Step 1: Modular Component Loader
@@ -36,53 +35,93 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
 
     /**
-     * Step 2: High-Performance Canvas Scroll Animation Engine
+     * Step 2: Ultra-Smooth 60fps Canvas Scroll Engine
+     * Uses alpha:false 2D context, fixed canvas allocation (no per-frame reallocation),
+     * requestAnimationFrame throttling, and lerp interpolation for butter-smooth scrubbing.
      */
     function setupAnimation(canvasId, containerId, imagePathFunc) {
         const canvas = document.getElementById(canvasId);
         if (!canvas) return;
 
-        const context = canvas.getContext("2d");
+        // Disable alpha channel for max GPU draw efficiency
+        const context = canvas.getContext("2d", { alpha: false, desynchronized: true });
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        const images = [];
-        let firstFrameLoaded = false;
+        const images = new Array(frameCount);
+        let targetFrame = 0;
+        let currentFrame = 0;
+        let lastDrawnFrame = -1;
+        let isAnimating = false;
+        let dimensionsSet = false;
 
-        // Preload all 240 images for smooth scrubbing
+        function setDimensions(img) {
+            if (!dimensionsSet && img.naturalWidth && img.naturalHeight) {
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                dimensionsSet = true;
+            }
+        }
+
+        function drawFrame(frameIdx) {
+            const roundedIdx = Math.min(frameCount - 1, Math.max(0, Math.round(frameIdx)));
+            if (roundedIdx === lastDrawnFrame) return;
+
+            const img = images[roundedIdx];
+            if (img && img.complete && img.naturalWidth > 0) {
+                setDimensions(img);
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                lastDrawnFrame = roundedIdx;
+            }
+        }
+
+        function animateLoop() {
+            // Smooth lerp for liquid-like scrubbing
+            const diff = targetFrame - currentFrame;
+            if (Math.abs(diff) > 0.01) {
+                currentFrame += diff * 0.35; // 0.35 lerp speed for responsive yet smooth transitions
+                drawFrame(currentFrame);
+                requestAnimationFrame(animateLoop);
+            } else {
+                currentFrame = targetFrame;
+                drawFrame(currentFrame);
+                isAnimating = false;
+            }
+        }
+
+        // Preload images into memory
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
             img.src = imagePathFunc(i);
-            images.push(img);
+            images[i - 1] = img;
 
             img.onload = () => {
-                if (!firstFrameLoaded && i === 1) {
-                    firstFrameLoaded = true;
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    context.drawImage(img, 0, 0);
+                if (i === 1) {
+                    setDimensions(img);
+                    drawFrame(0);
                 }
             };
         }
 
-        // Scrub frame on window scroll
-        window.addEventListener('scroll', () => {
+        function calculateTargetFrame() {
             const rect = container.getBoundingClientRect();
             const scrolled = Math.max(0, -rect.top);
-            const maxScrollTop = container.scrollHeight - window.innerHeight;
+            const maxScroll = container.scrollHeight - window.innerHeight;
 
-            const scrollFraction = Math.min(1, Math.max(0, scrolled / maxScrollTop));
-            const frameIndex = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
+            if (maxScroll > 0) {
+                const fraction = Math.min(1, Math.max(0, scrolled / maxScroll));
+                targetFrame = fraction * (frameCount - 1);
 
-            requestAnimationFrame(() => {
-                const currentImage = images[frameIndex];
-                if (currentImage && currentImage.complete && currentImage.naturalWidth !== 0) {
-                    canvas.width = currentImage.width;
-                    canvas.height = currentImage.height;
-                    context.drawImage(currentImage, 0, 0);
+                if (!isAnimating) {
+                    isAnimating = true;
+                    requestAnimationFrame(animateLoop);
                 }
-            });
-        }, { passive: true });
+            }
+        }
+
+        window.addEventListener('scroll', calculateTargetFrame, { passive: true });
+        window.addEventListener('resize', calculateTargetFrame, { passive: true });
+        calculateTargetFrame();
     }
 
     // Initialize First Scroll Animation (Hero spatial environment)
