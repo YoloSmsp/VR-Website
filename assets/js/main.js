@@ -1,13 +1,41 @@
 /**
  * Vision Pro & AI VR Interactive Showcase
- * Main Application Logic & Canvas Scroll Engine
+ * Modular Component Loader & Dual Canvas Scroll Engine
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const frameCount = 240;
 
     /**
-     * Helper to setup high-performance scroll frame sequence on an HTML5 canvas
+     * Step 1: Modular Component Loader
+     * Fetches and mounts all external HTML sections defined with [data-include]
+     */
+    async function loadComponents() {
+        const elements = document.querySelectorAll('[data-include]');
+        const loadPromises = Array.from(elements).map(async (el) => {
+            const file = el.getAttribute('data-include');
+            if (file) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        el.innerHTML = await response.text();
+                    } else {
+                        console.error(`Failed to load component: ${file}`);
+                    }
+                } catch (error) {
+                    console.error(`Error loading component ${file}:`, error);
+                }
+            }
+        });
+
+        await Promise.all(loadPromises);
+    }
+
+    // Load all HTML components first
+    await loadComponents();
+
+    /**
+     * Step 2: High-Performance Canvas Scroll Animation Engine
      */
     function setupAnimation(canvasId, containerId, imagePathFunc) {
         const canvas = document.getElementById(canvasId);
