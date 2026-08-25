@@ -739,85 +739,168 @@
                 </div>
             </div>
 
-            <!-- Middle Section: Compact Mirrored Feature Cards -->
-            <div class="w-full px-4 sm:px-8 md:px-12 py-6 sm:py-8 pointer-events-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-6 sm:gap-y-8 lg:gap-y-10 gap-x-8 sm:gap-x-12">
-                    
-                    <!-- Card 1: Left Column (Amber Visor) -->
-                    <div class="flex justify-start">
-                        <div class="max-w-[320px] rounded-[24px] bg-zinc-950/75 hover:bg-zinc-950/90 backdrop-blur-2xl p-5 sm:p-6 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.5)] group">
-                            <div class="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-3 group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </div>
-                            <div class="text-[0.6rem] uppercase font-bold tracking-[0.2em] text-orange-400 mb-1">01 &mdash; Optical Array</div>
-                            <h3 class="text-base sm:text-lg font-bold text-white tracking-tight mb-1.5">Electrochromic Amber Visor</h3>
-                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-                                Dynamically shifts from 99% transparent AR pass-through to pitch-black OLED enclosure in less than 3 milliseconds.
-                            </p>
-                        </div>
+            <!-- Feature Cards Section (Exact Mirror Layout as Above Section) -->
+            <section class="w-full py-6 sm:py-10 pointer-events-auto">
+                <div class="w-full px-4 sm:px-8 md:px-12">
+                    <div class="flex items-center gap-2.5 mb-8 sm:mb-10 justify-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]"></span>
+                        <h2 class="text-xs sm:text-[0.75rem] font-medium uppercase tracking-[0.2em] text-white/70">
+                            Neural Optics & Acoustic Engineering</h2>
                     </div>
 
-                    <!-- Card 2: Right Column (Magnesium Frame) -->
-                    <div class="flex justify-end">
-                        <div class="max-w-[320px] rounded-[24px] bg-zinc-950/75 hover:bg-zinc-950/90 backdrop-blur-2xl p-5 sm:p-6 border border-white/15 hover:border-white/30 transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.5)] group">
-                            <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                </svg>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start w-full">
+                        <!-- Left Column (4 Cards) -->
+                        <div class="flex flex-col gap-10 sm:gap-14 w-full">
+                            <!-- Card 1: Left attached -->
+                            <div
+                                class="self-start lg:ml-6 xl:ml-10 group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Electrochromic<span class="block">amber visor</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Dynamically shifts from 99% transparent AR to pitch-black OLED depth.</p>
                             </div>
-                            <div class="text-[0.6rem] uppercase font-bold tracking-[0.2em] text-white/50 mb-1">02 &mdash; Ergonomics</div>
-                            <h3 class="text-base sm:text-lg font-bold text-white tracking-tight mb-1.5">Aerospace Unibody Chassis</h3>
-                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-                                Cast from single-pour magnesium alloy with internal thermal heat-pipes and active silent micro-fans for zero sweating.
-                            </p>
+
+                            <!-- Card 2: Starts right where Card 1 ends -->
+                            <div
+                                class="self-start lg:ml-[240px] xl:ml-[280px] group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <path d="M7 7h10"></path>
+                                        <path d="M7 12h10"></path>
+                                        <path d="M7 17h10"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    M3 neural<span class="block">spatial bus</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    24 real-time sensor streams running continuous 6DoF hand & eye tracking.</p>
+                            </div>
+
+                            <!-- Card 3: Left attached -->
+                            <div
+                                class="self-start lg:ml-6 xl:ml-10 group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                        <path d="M2 12h20"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Sub-millimeter<span class="block">retinal mapping</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Dynamic foveated rendering focusing full 12K clarity on your focal point.</p>
+                            </div>
+
+                            <!-- Card 4: Starts right where Card 3 ends -->
+                            <div
+                                class="self-start lg:ml-[240px] xl:ml-[280px] group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="6" width="18" height="12" rx="2"></rect>
+                                        <path d="M23 13v-2"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Silicon anode<span class="block">hot-swap cell</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Rear-mounted power cell balancing headset weight with active cooling.</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Column (4 Cards): Exact mirror [Right Stick, Near Center, Right Stick, Near Center] -->
+                        <div class="flex flex-col gap-10 sm:gap-14 w-full">
+                            <!-- Card 1: Right attached (outer) -->
+                            <div
+                                class="self-end lg:mr-6 xl:mr-10 group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Aerospace unibody<span class="block">chassis</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Cast from single-pour magnesium alloy with internal silent micro-fans.</p>
+                            </div>
+
+                            <!-- Card 2: Near center / middle (inner) -->
+                            <div
+                                class="self-end lg:mr-[240px] xl:mr-[280px] group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 10v3"></path>
+                                        <path d="M6 6v11"></path>
+                                        <path d="M10 3v18"></path>
+                                        <path d="M14 8v7"></path>
+                                        <path d="M18 5v13"></path>
+                                        <path d="M22 10v3"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Temporal wave<span class="block">transducers</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Bone-conduction temporal pads project true 3D spatial acoustics cleanly.</p>
+                            </div>
+
+                            <!-- Card 3: Right attached (outer) -->
+                            <div
+                                class="self-end lg:mr-6 xl:mr-10 group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="6 2 18 2 22 8 12 22 2 8 6 2"></polygon>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Dual bionic<span class="block">waveguide optics</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Zero chromatic aberration with 64 PPD retina-grade angular pixel density.</p>
+                            </div>
+
+                            <!-- Card 4: Near center / middle (inner) -->
+                            <div
+                                class="self-end lg:mr-[240px] xl:mr-[280px] group relative rounded-[28px] bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-2xl p-7 sm:p-8 border border-white/15 hover:border-white/30 transition-all duration-300 w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white/90 mb-6">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
+                                        <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                        <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path>
+                                        <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-white leading-snug">
+                                    Quantum sync<span class="block">UWB pipeline</span></h3>
+                                <p class="text-xs sm:text-[0.8rem] text-white/60 font-light leading-relaxed mt-2.5">
+                                    Ultra-wideband telemetry linking controllers and peripherals under 0.8ms.</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Card 3: Left Column (Silicon Pipeline) -->
-                    <div class="flex justify-start">
-                        <div class="max-w-[320px] rounded-[24px] bg-zinc-950/75 hover:bg-zinc-950/90 backdrop-blur-2xl p-5 sm:p-6 border border-white/15 hover:border-white/30 transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.5)] group">
-                            <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                                    <path d="M7 7h10"></path>
-                                    <path d="M7 12h10"></path>
-                                    <path d="M7 17h10"></path>
-                                </svg>
-                            </div>
-                            <div class="text-[0.6rem] uppercase font-bold tracking-[0.2em] text-white/50 mb-1">03 &mdash; Silicon Engine</div>
-                            <h3 class="text-base sm:text-lg font-bold text-white tracking-tight mb-1.5">M3 Neural Spatial Bus</h3>
-                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-                                24 real-time sensor streams running continuous 6DoF hand gesture, depth topography, and sub-millimeter eye-tracking.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Right Column (Spatial Acoustics) -->
-                    <div class="flex justify-end">
-                        <div class="max-w-[320px] rounded-[24px] bg-zinc-950/75 hover:bg-zinc-950/90 backdrop-blur-2xl p-5 sm:p-6 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.5)] group">
-                            <div class="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-3 group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 10v3"></path>
-                                    <path d="M6 6v11"></path>
-                                    <path d="M10 3v18"></path>
-                                    <path d="M14 8v7"></path>
-                                    <path d="M18 5v13"></path>
-                                    <path d="M22 10v3"></path>
-                                </svg>
-                            </div>
-                            <div class="text-[0.6rem] uppercase font-bold tracking-[0.2em] text-orange-400 mb-1">04 &mdash; Spatial Audio</div>
-                            <h3 class="text-base sm:text-lg font-bold text-white tracking-tight mb-1.5">Temporal Wave Transducers</h3>
-                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-                                Bone-conduction temporal pads project true 3D spatial acoustics directly to your inner ear without blocking real ambient sounds.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
+            </section>
 
             <!-- Bottom Section: Telemetry Bar, CTA & Master Footer -->
             <div class="w-full px-4 sm:px-8 md:px-12 pt-6 pb-6 pointer-events-auto">
