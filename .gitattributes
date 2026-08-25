@@ -1,0 +1,5 @@
+# GitHub Linguist Language Detection
+*.html linguist-detectable=true
+*.js linguist-detectable=true
+assets/frames/** linguist-vendored
+assets/images/** linguist-vendored

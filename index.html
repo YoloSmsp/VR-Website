@@ -128,7 +128,8 @@
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border-2 ring-2 shadow-lg bg-zinc-950/90"
                                             style="border-color: #ff6a00; box-shadow: 0 0 25px rgba(255, 106, 0, 0.4);">
-                                            <img src="assets/images/models/headset_model_a_1787642757913.jpg" alt="Apex Cyber"
+                                            <img src="assets/images/models/headset_model_a_1787642757913.jpg"
+                                                alt="Apex Cyber"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                             <span
                                                 class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full shadow-[0_0_8px_currentColor]"
@@ -145,7 +146,8 @@
                                     <div class="relative z-10 flex flex-col items-center">
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border border-white/15 bg-zinc-950/60 hover:border-white/40 opacity-70 hover:opacity-100 hover:bg-zinc-900/80">
-                                            <img src="assets/images/models/headset_model_b_1787642783649.jpg" alt="Mirage Glass"
+                                            <img src="assets/images/models/headset_model_b_1787642783649.jpg"
+                                                alt="Mirage Glass"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                         </button>
                                         <div class="h-6 mt-2 flex items-center justify-center">
@@ -158,7 +160,8 @@
                                     <div class="relative z-10 flex flex-col items-center">
                                         <button
                                             class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 flex items-center justify-center p-2 border border-white/15 bg-zinc-950/60 hover:border-white/40 opacity-70 hover:opacity-100 hover:bg-zinc-900/80">
-                                            <img src="assets/images/models/headset_model_c_1787642797135.jpg" alt="Horizon Pulse"
+                                            <img src="assets/images/models/headset_model_c_1787642797135.jpg"
+                                                alt="Horizon Pulse"
                                                 class="w-full h-full object-contain filter drop-shadow-md rounded-lg">
                                         </button>
                                         <div class="h-6 mt-2 flex items-center justify-center">
@@ -691,9 +694,218 @@
     </section>
 
     <!-- SECOND SCROLL ANIMATION -->
-    <div id="animation-container-2" class="relative" style="min-height: 600vh;">
+    <div id="animation-container-2" class="relative" style="min-height: 380vh;">
+        <!-- Sticky Background Canvas -->
         <div class="sticky top-0 left-0 w-full h-screen z-0 pointer-events-none">
             <canvas id="scroll-canvas-2" class="w-full h-full object-cover"></canvas>
+        </div>
+
+        <!-- Foreground Scrolling Layer -->
+        <div class="relative z-10 w-full flex flex-col justify-between" style="min-height: 380vh; margin-top: -100vh;">
+            
+            <!-- Top Section: Hardware Architecture Intro -->
+            <div class="w-full px-4 sm:px-8 md:px-12 pt-20 sm:pt-28 pb-12 pointer-events-auto">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-xl mb-6">
+                        <span class="w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_10px_#ff6a00]"></span>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-orange-400">Hardware Teardown & Acoustics</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+                        Anatomy of <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-white">pure spatial fidelity</span>.
+                    </h2>
+                    <p class="text-zinc-300 text-sm sm:text-base font-light leading-relaxed max-w-2xl">
+                        Engineered from aerospace magnesium alloys and custom dual-waveguide optics. Designed to distribute mass evenly while delivering zero-latency immersion.
+                    </p>
+
+                    <!-- Metrics Badges -->
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4 mt-8">
+                        <div class="px-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
+                            <span class="text-xs font-bold text-white block">12K Micro-OLED</span>
+                            <span class="text-[0.65rem] text-zinc-400 uppercase tracking-wider">64 PPD Sharpness</span>
+                        </div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
+                            <span class="text-xs font-bold text-orange-400 block">&lt; 0.8ms Latency</span>
+                            <span class="text-[0.65rem] text-zinc-400 uppercase tracking-wider">Neural Silicon Bus</span>
+                        </div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
+                            <span class="text-xs font-bold text-white block">140° Bionic FOV</span>
+                            <span class="text-[0.65rem] text-zinc-400 uppercase tracking-wider">Natural Peripheral</span>
+                        </div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
+                            <span class="text-xs font-bold text-white block">290g Net Mass</span>
+                            <span class="text-[0.65rem] text-zinc-400 uppercase tracking-wider">Counter-Balanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Section: Symmetrically Mirrored Feature Cards across rotation -->
+            <div class="w-full px-4 sm:px-8 md:px-12 py-16 pointer-events-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-24 sm:gap-y-36 lg:gap-y-48 gap-x-12">
+                    
+                    <!-- Card 1: Left Column (Amber Visor) -->
+                    <div class="flex justify-start">
+                        <div class="max-w-[340px] rounded-[28px] bg-zinc-950/70 hover:bg-zinc-950/90 backdrop-blur-2xl p-7 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-5 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="text-[0.65rem] uppercase font-bold tracking-[0.2em] text-orange-400 mb-1">01 &mdash; Optical Array</div>
+                            <h3 class="text-xl font-bold text-white tracking-tight mb-2.5">Electrochromic Amber Visor</h3>
+                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
+                                Dynamically shifts from 99% transparent AR pass-through to pitch-black OLED enclosure in less than 3 milliseconds.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Right Column (Magnesium Frame) -->
+                    <div class="flex justify-end">
+                        <div class="max-w-[340px] rounded-[28px] bg-zinc-950/70 hover:bg-zinc-950/90 backdrop-blur-2xl p-7 border border-white/15 hover:border-white/30 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-[0.65rem] uppercase font-bold tracking-[0.2em] text-white/50 mb-1">02 &mdash; Ergonomics</div>
+                            <h3 class="text-xl font-bold text-white tracking-tight mb-2.5">Aerospace Unibody Chassis</h3>
+                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
+                                Cast from single-pour magnesium alloy with internal thermal heat-pipes and active silent micro-fans for zero sweating.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Left Column (Silicon Pipeline) -->
+                    <div class="flex justify-start">
+                        <div class="max-w-[340px] rounded-[28px] bg-zinc-950/70 hover:bg-zinc-950/90 backdrop-blur-2xl p-7 border border-white/15 hover:border-white/30 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                                    <path d="M7 7h10"></path>
+                                    <path d="M7 12h10"></path>
+                                    <path d="M7 17h10"></path>
+                                </svg>
+                            </div>
+                            <div class="text-[0.65rem] uppercase font-bold tracking-[0.2em] text-white/50 mb-1">03 &mdash; Silicon Engine</div>
+                            <h3 class="text-xl font-bold text-white tracking-tight mb-2.5">M3 Neural Spatial Bus</h3>
+                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
+                                24 real-time sensor streams running continuous 6DoF hand gesture, depth topography, and sub-millimeter eye-tracking.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Right Column (Spatial Acoustics) -->
+                    <div class="flex justify-end">
+                        <div class="max-w-[340px] rounded-[28px] bg-zinc-950/70 hover:bg-zinc-950/90 backdrop-blur-2xl p-7 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-5 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 10v3"></path>
+                                    <path d="M6 6v11"></path>
+                                    <path d="M10 3v18"></path>
+                                    <path d="M14 8v7"></path>
+                                    <path d="M18 5v13"></path>
+                                    <path d="M22 10v3"></path>
+                                </svg>
+                            </div>
+                            <div class="text-[0.65rem] uppercase font-bold tracking-[0.2em] text-orange-400 mb-1">04 &mdash; Spatial Audio</div>
+                            <h3 class="text-xl font-bold text-white tracking-tight mb-2.5">Temporal Wave Transducers</h3>
+                            <p class="text-xs text-zinc-300 font-light leading-relaxed">
+                                Bone-conduction temporal pads project true 3D spatial acoustics directly to your inner ear without blocking real ambient sounds.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Section: Telemetry Bar, CTA & Master Footer -->
+            <div class="w-full px-4 sm:px-8 md:px-12 pt-16 pb-8 pointer-events-auto">
+                
+                <!-- Telemetry Glass Bar -->
+                <div class="w-full rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-2xl p-6 sm:p-8 mb-16 shadow-2xl">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                        <div class="pt-4 md:pt-0">
+                            <div class="text-2xl sm:text-3xl font-bold text-white mb-1">6144 x 3456</div>
+                            <div class="text-xs text-zinc-400 uppercase tracking-widest font-light">Per-Eye Resolution</div>
+                        </div>
+                        <div class="pt-4 md:pt-0 md:pl-6">
+                            <div class="text-2xl sm:text-3xl font-bold text-orange-400 mb-1">19 Sensors</div>
+                            <div class="text-xs text-zinc-400 uppercase tracking-widest font-light">LiDAR + Optical + IMU</div>
+                        </div>
+                        <div class="pt-4 md:pt-0 md:pl-6">
+                            <div class="text-2xl sm:text-3xl font-bold text-white mb-1">4.5 Hours</div>
+                            <div class="text-xs text-zinc-400 uppercase tracking-widest font-light">Hot-Swap Battery Cell</div>
+                        </div>
+                        <div class="pt-4 md:pt-0 md:pl-6">
+                            <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Wi-Fi 7 + UWB</div>
+                            <div class="text-xs text-zinc-400 uppercase tracking-widest font-light">Quantum Sync Band</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Pre-Order CTA Banner -->
+                <div class="w-full rounded-3xl bg-gradient-to-r from-zinc-950 via-orange-950/30 to-zinc-950 border border-orange-500/30 p-8 sm:p-12 mb-20 text-center relative overflow-hidden shadow-[0_0_60px_rgba(255,106,0,0.15)]">
+                    <div class="relative z-10 max-w-2xl mx-auto">
+                        <h3 class="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
+                            Step into the next era of reality.
+                        </h3>
+                        <p class="text-zinc-300 text-sm sm:text-base font-light mb-8">
+                            Limited launch allocation available. Reserve your Forma Horizon Pro headset today with global priority delivery.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <button class="w-full sm:w-auto px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 transform hover:scale-105 cursor-pointer shadow-2xl"
+                                style="background-color: #ff6a00; color: #000; box-shadow: 0 8px 30px rgba(255, 106, 0, 0.4);">
+                                Reserve My Unit
+                            </button>
+                            <button class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 hover:border-white/50 text-white text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-200 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                Download Developer SDK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master Footer -->
+                <footer class="w-full pt-10 pb-6 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                        <div class="flex items-center gap-1.5 cursor-pointer select-none">
+                            <div class="flex items-center tracking-[-0.05em] font-bold text-xl text-white">
+                                <span>INFINITE</span>
+                                <span class="inline-flex items-center justify-center px-1.5 mx-0.5 font-extrabold text-black rounded-xs transform -skew-x-6 text-sm" style="background-color: #ff6a00;">V</span>
+                                <span class="text-white/70 font-semibold text-sm tracking-[0.1em] ml-1">.RETAIL</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center gap-8 text-xs text-zinc-400 uppercase tracking-widest font-medium">
+                            <button class="hover:text-white transition-colors cursor-pointer">Overview</button>
+                            <button class="hover:text-white transition-colors cursor-pointer">Architecture</button>
+                            <button class="hover:text-white transition-colors cursor-pointer">Hardware Specs</button>
+                            <button class="hover:text-white transition-colors cursor-pointer">Developer SDK</button>
+                            <button class="hover:text-white transition-colors cursor-pointer">Enterprise</button>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <button class="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-white/30 flex items-center justify-center text-zinc-400 hover:text-white transition-all cursor-pointer">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </button>
+                            <button class="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-white/30 flex items-center justify-center text-zinc-400 hover:text-white transition-all cursor-pointer">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-zinc-500">
+                        <div>&copy; 2026 INFINITEV Inc. All rights reserved. Spatial Computing Division.</div>
+                        <div class="flex items-center gap-6">
+                            <button class="hover:text-zinc-300 transition-colors cursor-pointer">Privacy Policy</button>
+                            <button class="hover:text-zinc-300 transition-colors cursor-pointer">Terms of Service</button>
+                            <button class="hover:text-zinc-300 transition-colors cursor-pointer">Security</button>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+
         </div>
     </div>
 
