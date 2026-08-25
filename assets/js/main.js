@@ -4,8 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const frameCount = 240;
-
     /**
      * Step 1: Modular Component Loader
      * Fetches and mounts all external HTML sections defined with [data-include]
@@ -36,10 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     /**
      * Step 2: Ultra-Smooth 60fps Canvas Scroll Engine
-     * Uses alpha:false 2D context, fixed canvas allocation (no per-frame reallocation),
-     * requestAnimationFrame throttling, and lerp interpolation for butter-smooth scrubbing.
+     * Uses alpha:false 2D context, fixed canvas allocation, requestAnimationFrame throttling,
+     * lerp interpolation, and custom frame-stepping for lightweight, snappy scrubbing.
      */
-    function setupAnimation(canvasId, containerId, imagePathFunc, totalFrames = 240) {
+    function setupAnimation(canvasId, containerId, imagePathFunc, totalFrames = 240, maxFolderFrames = 240) {
         const canvas = document.getElementById(canvasId);
         if (!canvas) return;
 
@@ -89,10 +87,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-        // Preload images into memory
+        // Preload sampled images into memory
         for (let i = 1; i <= totalFrames; i++) {
+            // Evenly sample totalFrames across maxFolderFrames (e.g. 60 frames sampled from 240)
+            const frameNum = Math.round(1 + ((i - 1) / (totalFrames - 1)) * (maxFolderFrames - 1));
             const img = new Image();
-            img.src = imagePathFunc(i);
+            img.src = imagePathFunc(frameNum);
             images[i - 1] = img;
 
             img.onload = () => {
@@ -129,14 +129,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         "scroll-canvas",
         "animation-container",
         index => `assets/frames/hero/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`,
+        240,
         240
     );
 
-    // Initialize Second Scroll Animation (VR Box interaction — 240 frames for 1 complete 360° round)
+    // Initialize Second Scroll Animation (VR Box interaction — 240 frames matching top slider FPS)
     setupAnimation(
         "scroll-canvas-2",
         "animation-container-2",
         index => `assets/frames/vr-box/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`,
+        240,
         240
     );
 });
